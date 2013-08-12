@@ -1,0 +1,13 @@
+index.php:
+----------
+the webservice php script (using nusoap library).
+
+functions.php:
+--------------
+the function used as as web service.
+
+client.php:
+-----------
+nusoap client to conusme a web service used for testing.
+
+note: this file is not available at nafeer website.

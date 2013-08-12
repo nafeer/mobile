@@ -9,6 +9,7 @@ require_once('lib/nusoap.php');
 // Create the server instance
 $server = new soap_server();
 
+// set encoding to UTF-8
 $server->soap_defencoding = 'UTF-8';
 
 // Initialize WSDL support
@@ -17,7 +18,7 @@ $server->configureWSDL('NafeerWebService', 'urn:NafeerWebService');
 // Register the method to expose
 $server->register('login',                									// method name
     array('email' => 'xsd:string','password' => 'xsd:string'),       		// input parameters
-    array('return' => 'xsd:string'),      									// output parameters
+    array('status' => 'xsd:string'),      									// output parameters
     'urn:NafeerWebService',                     							// namespace
     'urn:NafeerWebService#login',               							// soapaction
     'rpc',                               									// style
@@ -25,24 +26,25 @@ $server->register('login',                									// method name
     'Check if credentials are correct'          							// documentation
 );
 
-$server->register('loadAreas',                								// method name
-    array(),       														    // input parameters
-    array('return' => 'xsd:string'),      									// output parameters
-    'urn:NafeerWebService',                     							// namespace
-    'urn:NafeerWebService#loadAreas',               						// soapaction
-    'rpc',                               									// style
-    'encoded',                            									// use
-    'Load areas names'					          							// documentation
-);
-
-$server->register('loadStateName',                							// method name
-    array('state' => 'xsd:string'),       								    // input parameters
-    array('return' => 'xsd:string'),      									// output parameters
+$server->register('loadStates',                								// method name
+    array(),       								    						// input parameters
+    array('states' => 'xsd:string'),      									// output parameters
     'urn:NafeerWebService',                     							// namespace
     'urn:NafeerWebService#loadStateName',               					// soapaction
     'rpc',                               									// style
     'encoded',                            									// use
     'Load state name by taking area name'          							// documentation
+);
+
+
+$server->register('loadAreas',                								// method name
+    array('stateID' => 'xsd:string'),									    // input parameters
+    array('areas' => 'xsd:string'),      									// output parameters
+    'urn:NafeerWebService',                     							// namespace
+    'urn:NafeerWebService#loadAreas',               						// soapaction
+    'rpc',                               									// style
+    'encoded',                            									// use
+    'Load areas names'					          							// documentation
 );
 
 $server->register('saveNotification',                						// method name
@@ -69,7 +71,7 @@ $server->register('saveNotification',                						// method name
 	'notification_close_drainage' => 'xsd:string',
 	'notification_other' => 'xsd:string'
 	),       								    
-    array('return' => 'xsd:string'),      									// output parameters
+    array('status' => 'xsd:string'),      									// output parameters
     'urn:NafeerWebService',                     							// namespace
     'urn:NafeerWebService#saveNotification',               					// soapaction
     'rpc',                               									// style
