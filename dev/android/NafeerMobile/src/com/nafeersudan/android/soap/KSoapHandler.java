@@ -74,6 +74,56 @@ public class KSoapHandler {
 		credintials.put("email", userName);
 		return processRequest(methodName, credintials);
 	}
+	
+	public String loadStates()
+	{
+		String methodName = "loadStates";
+		HashMap<String, String> args = new HashMap<String, String>();
+		return processRequest(methodName, args);
+	}
+	
+	public String loadAreas(String stateId)
+	{
+		String methodName = "loadAreas";
+		HashMap<String, String> args = new HashMap<String, String>();
+		args.put("stateID", stateId);
+		return processRequest(methodName, args);
+	}
+	
+	public String saveNotification(String date, String creator, String tell, String occupation,
+			String areaId, String locationId, String pepNum, String womNum, String chiNum,
+			String oldNum, String deathNum, String injNum, String compDestHuose, 
+			String parDestHouse, String torrHouse, String stockHouse, String elecProblem,
+			String damageRoad, String emergencyCase, String closeDrainage, String other )
+	{
+		String methodName = "saveNotifiaction";
+		HashMap<String, String> args = new HashMap<String, String>();
+		args.put("notification_date",date);
+		args.put("notification_creator",creator);
+		args.put("notification_tell",tell);
+		args.put("notification_occupation",occupation);
+		args.put("notification_area_id",areaId);
+		args.put("notification_location_id",locationId);
+		args.put("notification_pep_num",pepNum);
+		args.put("notification_wom_num",womNum);
+		args.put("notification_chi_num",chiNum);
+		args.put("notification_oldnum",oldNum);
+		args.put("notification_death_num",deathNum);
+		args.put("notification_inj_num",injNum);
+		args.put("notification_comp_dest_huose",compDestHuose);
+		args.put("notification_par_dest_house",parDestHouse);
+		args.put("notification_torr_house",torrHouse);
+		args.put("notification_stock_house",stockHouse);
+		args.put("notification_elec_problem",elecProblem);
+		args.put("notification_damage_road",damageRoad);
+		args.put("notification_emergency_case",emergencyCase);
+		args.put("notification_close_drainage",closeDrainage);
+		args.put("notification_other",other);
+		
+		return processRequest(methodName, args);
+
+	}
+	
 //	public String loadAreas()
 //	{
 //	    String methodName = "loadAreas";

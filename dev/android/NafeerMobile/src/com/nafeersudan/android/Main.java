@@ -14,8 +14,9 @@ public class Main extends Activity {
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.main);
-        KSoapHandler handler = new KSoapHandler("http://10.0.2.2/nafeer/index.php");
-        String response = handler.login("email@example.com", "pass");
+        KSoapHandler handler = new KSoapHandler("http://www.nafeersudan.com/nafeer_portal/ws/index.php");
+        String response = handler.login("altaif.bakri@gmail.com", "122");
+      //  String response =handler.loadStates();
         EditText editText = (EditText) findViewById(R.id.editText1);
         editText.setText(response);
     }
